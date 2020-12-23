@@ -89,6 +89,4 @@ Modern browsers and Internet Explorer 10+.
 [MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
 
 Copyright (c) 2017-present PanJiaChen
-=======
-# guli_admin
->>>>>>> 7a3a23c5ec25d871d70efe2407745e5ac37c7da6
+
