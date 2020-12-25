@@ -50,10 +50,12 @@ export default {
     methods:{
         saveOrUpdate(){
             this.savaBtnDisabled = true;
+            debugger;
+            alert(this.teacher);
             if(!this.teacher.id){
                   this.saveDate();  
             }else{
-                this.updataDate();
+                this.updataDate(this.teacher.id);
             }
             
         },
@@ -97,10 +99,11 @@ export default {
             })
         },
         //更新
-        updataDate(){
+        updataDate(id){
             this.$axios({
                 url:`http://localhost:8885/admin/edu/teacher/${id}`,
                 method:'put',
+                data:this.teacher
             }).then(response=>{
                 let res = response.data;
                 if(res.code==20000){
