@@ -161,32 +161,52 @@ export const constantRoutes = [
   },
   //讲师管理
   {
-    path:'/edu/teacher',
-    component:Layout,
-    redirect:'edu/teacher/list',
-    name:'teacher',
-    meta:{title:'讲师管理',icon:'peoples'},
-    children:[
+    path: '/edu/teacher',
+    component: Layout,
+    redirect: 'edu/teacher/list',
+    name: 'teacher',
+    meta: { title: '讲师管理', icon: 'peoples' },
+    children: [
       {
-        path:'list',
-        name:'EduTeacherList',
-        component:()=>import('@/views/edu/teacher/list'),
-        meta:{title:'讲师列表'}
+        path: 'list',
+        name: 'EduTeacherList',
+        component: () => import('@/views/edu/teacher/list'),
+        meta: { title: '讲师列表' }
       },
       {
-        path:'create',
-        name:'EduTeacherCreate',
-        component:()=>import('@/views/edu/teacher/form'),
-        meta:{title:'添加讲师'}
+        path: 'create',
+        name: 'EduTeacherCreate',
+        component: () => import('@/views/edu/teacher/form'),
+        meta: { title: '添加讲师' }
       },
       {
-        path:'edit/:id',
-        name:'EduTeacherEdit',
-        component:()=>import('@/views/edu/teacher/form'),
-        meta:{title:'编辑讲师',noCache:true},
-        hidden:true
+        path: 'edit/:id',
+        name: 'EduTeacherEdit',
+        component: () => import('@/views/edu/teacher/form'),
+        meta: { title: '编辑讲师', noCache: true },
+        hidden: true
       },
     ]
+  },
+  //课程分类管理
+  {
+    path: '/edu/subject',
+    component: Layout,
+    redirect: '/edu/subject/list',
+    name: 'subject',
+    meta: { title: '课程分类管理', icon: 'nested' },
+    children: [{
+      path: 'list',
+      name: 'EduSubjectList',
+      component: () => import('@/views/edu/subject/list'),
+      meta: { title: '课程分类列表' }
+    },
+    {
+      path: 'import',
+      name: 'EduSubjectImport',
+      component: () => import('@/views/edu/subject/import'),
+      meta: { title: '导入课程分类' }
+    }]
   },
 
   // 404 page must be placed at the end !!!
@@ -208,5 +228,5 @@ export function resetRouter() {
 }
 
 export default new Router({
-  routes:constantRoutes
+  routes: constantRoutes
 })

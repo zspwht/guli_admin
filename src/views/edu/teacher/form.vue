@@ -154,7 +154,7 @@ export default {
     },
     //上传成功后的回调函数
     cropSucess(data){
-      debugger;
+      //debugger;
       console.log(data);
       this.imageCropperShow = false;
       this.teacher.avatar = data.uploadUrl;
