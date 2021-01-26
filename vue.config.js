@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -119,4 +120,5 @@ module.exports = {
         }
       )
   }
+  
 }

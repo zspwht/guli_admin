@@ -16,14 +16,14 @@
           :on-error="fileUploadError"
           :disabled="importBtnDisabled"
           :limit="1"
-          :action="BASE_API + '/admin/edu/subject/import'"
+          :action="BASE_API + '/admin/oss/file/upload'"
           name="file"
           accept="application/vnd.ms-excel"
         >
           <el-button slot="trigger" size="small" type="primary"
             >选取文件</el-button
           >
-          <el-button :loading="loading" style="margin-left: 10px" size="small" type="success" @click="submitUpload"> 
+          <el-button :loading="loading" style="margin-left: 10px" size="small" type="success" @click="submitUpload">
             {{ fileUploadBtnText }}
           </el-button>
         </el-upload>
@@ -35,7 +35,7 @@
 export default {
     data(){
         return{
-            BASE_API:process.env.VUE_APP_BASE_API,
+            BASE_API:process.env.VUE_APP_OSS,
             OSS_PATH:process.env.VUE_APP_OSSPATH,
             fileUploadBtnText:'上传到服务器',
             importBtnDisabled:false,
