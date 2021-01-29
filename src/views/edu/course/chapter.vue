@@ -186,7 +186,7 @@ export default {
         })
       },
       editChapter(chapterId){
-        this.diaologChapterFormVisible = true;
+        this.diaologVideoFormVisible = true;
         this.$axios({
           url:BaseUrl+`admin/edu/chapter/${chapterId}`,
           method:'get'
