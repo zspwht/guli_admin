@@ -229,21 +229,21 @@ export const constantRoutes = [
         meta:{title:'发布课程'}
       },
       {
-        path:'info:/id',
+        path:'info/:id',
         name:'EduCourseInfoEdit',
         component:()=>import('@/views/edu/course/info'),
         meta:{title:'编辑课程基本信息',noCache:true},
         hidden:true
       },
       {
-        path:'chapter:/id',
+        path:'chapter/:id',
         name:'EduCourseChapterEdit',
         component:()=>import('@/views/edu/course/chapter'),
         meta:{title:'编辑课程大纲',noCache:true},
         hidden:true
       },
       {
-        path:'publish:/id',
+        path:'publish/:id',
         name:'EduCoursePublishEdit',
         component:()=>import('@/views/edu/course/publish'),
         meta:{title:'发布课程',noCache:true},

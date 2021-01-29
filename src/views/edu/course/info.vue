@@ -92,12 +92,13 @@ export default {
             if(!this.courseInfo.id){
                 this.savaData();
             }else{
-                this.updataData();
+                this.updateData();
             }
-            this.$route.push({path:'/edu/course/chapter/1'});
+            //this.$router.push({path:'/edu/course/chapter/1'});
         },
         init(){
             if(this.$route.params&&this.$route.params.id){
+                debugger;
                 const id = this.$route.params.id;
                 console.log(id);
                 //根据id获取课程信息
@@ -114,8 +115,10 @@ export default {
         savaData(){
             this.$axios({
                 url:process.env.VUE_APP_BASE_API+'admin/edu/course/saveCourseInfo',
-                method:'post'
+                method:'post',
+                data:this.courseInfo
             }).then((response)=>{
+                debugger;
                 const res = response.data;
                 if(res.success){
                     this.$message({
@@ -123,14 +126,33 @@ export default {
                         message:'保存成功！'
                     });
                 }
-            }).then((response=>{
-                this.$router.push({path:'/edu/course/chapter'+response.data.data.courseId})
-            })).catch(error=>{
+              this.$router.push({path:'/edu/course/chapter/'+response.data.data.courseId})
+            })/*.then((response)=>{
+                debugger
+                this.$router.push({path:'/edu/course/chapter/'+response.data.data.courseId})
+            })*/.catch(error=>{
                 console.log(error);
             })
         },
-        updataData(){
-            this.$router.push({path:'/edu/course/chapter/1'})
+        updateData(){
+          this.$axios({
+            url:process.env.VUE_APP_BASE_API+`admin/edu/course/courseInfo/${this.courseInfo.id}`,
+            method:'post',
+            data:this.courseInfo
+          }).then((response)=>{
+            const res = response.data;
+            if(res.success){
+              this.$message({
+                type:'success',
+                message:'保存成功！'
+              });
+              this.$router.push({path:'/edu/course/chapter/'+response.data.data.courseId})
+            }
+          })/*.then((response=>{
+            this.$router.push({path:'/edu/course/chapter'+response.data.data.courseId})
+          }))*/.catch(error=>{
+            console.log(error);
+          })
         },
         initSubjectList(){
              this.$axios({
@@ -192,11 +214,10 @@ export default {
       //根据id获取课程信息
       fetchCourseInfoById(id){
         this.$axios({
-          url:process.env.VUE_APP_BASE_API+'admin/edu/course/courseInfo',
+          url:process.env.VUE_APP_BASE_API+`admin/edu/course/courseInfo/${id}`,
           method:'get',
-          data:id
         }).then(response=>{
-          this.courseInfo = response.data.item;
+          this.courseInfo = response.data.data.item;
           this.initSubjectList();
           this.initTeacherList();
         }).catch(response=>{
