@@ -186,7 +186,7 @@ export default {
         })
       },
       editChapter(chapterId){
-        this.diaologVideoFormVisible = true;
+        this.diaologChapterFormVisible = true;
         this.$axios({
           url:BaseUrl+`admin/edu/chapter/${chapterId}`,
           method:'get'
@@ -294,7 +294,7 @@ export default {
         })
       },
       editVideo(videoId){
-        this.diaologChapterFormVisible = true;
+        this.diaologVideoFormVisible = true;
         this.$axios({
           url:BaseUrl+`admin/edu/video/${videoId}`,
           method:'get'
