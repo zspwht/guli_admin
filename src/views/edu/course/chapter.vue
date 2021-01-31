@@ -116,10 +116,10 @@ export default {
         },
         next() {
           console.log('next')
-          this.$router.push({path: '/edu/course/publish/1'})
+          this.$router.push({path: '/edu/course/publish/'+this.courseId})
         },
         init(){
-          debugger;
+          //debugger;
           if(this.$route.params&&this.$route.params.id){
             this.courseId = this.$route.params.id;
             //根据id获取课程基本信息
@@ -138,7 +138,7 @@ export default {
       },
       //新增或则更新章节
       saveOrUpdateChapter(){
-          debugger;
+          //debugger;
         this.diaologChapterFormVisible = true;
         if(!this.chapter.id){
           this.saveChapter();

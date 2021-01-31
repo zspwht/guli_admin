@@ -98,7 +98,7 @@ export default {
         },
         init(){
             if(this.$route.params&&this.$route.params.id){
-                debugger;
+                //debugger;
                 const id = this.$route.params.id;
                 console.log(id);
                 //根据id获取课程信息
@@ -118,7 +118,7 @@ export default {
                 method:'post',
                 data:this.courseInfo
             }).then((response)=>{
-                debugger;
+                //debugger;
                 const res = response.data;
                 if(res.success){
                     this.$message({
@@ -161,16 +161,25 @@ export default {
             }).then((response)=>{
                     let res = response.data;
                    if(res.code==20000){
+                     //debugger;
                        this.subjectNestedList = res.data.items
                    }
+                   //debugger;
+               for (let i = 0; i < this.subjectNestedList.length; i++) {
+                 if(this.subjectNestedList[i].id==this.courseInfo.subjectParentId){
+                   this.subSubjectList = this.subjectNestedList[i].children;
+                 }
+               }
             }).catch(function (error){
                 console.log(error);
             })
         },
         subjectLeaveOneChanged(value){
+          //debugger;
             console.log(value);
             for (let i = 0; i < this.subjectNestedList.length; i++) {
                if(this.subjectNestedList[i].id==value){
+                 //debugger;
                    this.subSubjectList = this.subjectNestedList[i].children
                    this.courseInfo.subjectId = ''
                }
